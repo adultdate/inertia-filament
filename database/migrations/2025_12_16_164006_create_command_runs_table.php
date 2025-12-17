@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create(config('command-runner.table_name'), function (Blueprint $table) {
+        Schema::create('command_runs', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('process_id')->nullable();
             $table->string('command', 500);

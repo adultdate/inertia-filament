@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-// use App\Models\Permission;
-//use App\Models\Role;
+use App\Models\Permission;
+use App\Models\Role;
 use App\Models\User;
 // PLUGINS
 use BezhanSalleh\LanguageSwitch\Enums\Placement;
@@ -29,10 +29,8 @@ final class AppServiceProvider extends ServiceProvider
     {
         $this->bootModelsDefaults();
         $this->bootPasswordDefaults();
-       
-        if (app()->environment('production')) {
-            URL::forceScheme('https');
-        }
+        $this->bootViteConfiguration();
+        $this->bootPermissionRegistrar();
 
         PanelSwitch::configureUsing(function (PanelSwitch $switch): void {
             $switch
@@ -93,5 +91,20 @@ final class AppServiceProvider extends ServiceProvider
     private function bootPasswordDefaults(): void
     {
         Password::defaults(fn () => app()->isLocal() || app()->runningUnitTests() ? Password::min(12)->max(255) : Password::min(12)->max(255)->uncompromised());
+    }
+
+    private function bootViteConfiguration(): void
+    {
+        // When behind Apache reverse proxy, use HTTPS URLs
+        if (app()->environment('production') || str_starts_with(config('app.url'), 'https://')) {
+            URL::forceScheme('https');
+        }
+    }
+
+    private function bootPermissionRegistrar(): void
+    {
+        app(PermissionRegistrar::class)
+            ->setPermissionClass(Permission::class)
+            ->setRoleClass(Role::class);
     }
 }
