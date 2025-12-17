@@ -4,15 +4,19 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Models\Permission;
+use App\Models\Role;
+use App\Models\User;
+// PLUGINS
 use BezhanSalleh\LanguageSwitch\Enums\Placement;
 use BezhanSalleh\LanguageSwitch\LanguageSwitch;
 use BezhanSalleh\PanelSwitch\PanelSwitch;
-// PLUGINS
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Spatie\Permission\PermissionRegistrar;
 
 final class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +30,7 @@ final class AppServiceProvider extends ServiceProvider
         $this->bootModelsDefaults();
         $this->bootPasswordDefaults();
         $this->bootViteConfiguration();
+        $this->bootPermissionRegistrar();
 
         PanelSwitch::configureUsing(function (PanelSwitch $switch): void {
             $switch
@@ -94,5 +99,12 @@ final class AppServiceProvider extends ServiceProvider
         if (app()->environment('production') || str_starts_with(config('app.url'), 'https://')) {
             URL::forceScheme('https');
         }
+    }
+
+    private function bootPermissionRegistrar(): void
+    {
+        app(PermissionRegistrar::class)
+            ->setPermissionClass(Permission::class)
+            ->setRoleClass(Role::class);
     }
 }
