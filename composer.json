@@ -7,16 +7,29 @@
     "license": "MIT",
     "require": {
         "php": "^8.4.0",
-        "filament/filament": "^4.3",
+        "adultdate/filament-language-switch": "*",
+        "adultdate/filament-messages": ">=1",
+        "adultdate/filament-panel-switch": "*",
+        "adultdate/filament-postnummer": "*",
+        "adultdate/filament-fullcalendar": ">=4",
+        "adultdate/filament-tab-layout-plugin": ">=3",
+        "adultdate/filament-calendar": "*",
+        "adultdate/filament-resized-column": "*",
+        "adultdate/filament-shield": "*",
+        "adultdate/filament-queueable-bulk-actions": "*",
+        "filament/filament": "^4.3.1",
         "inertiajs/inertia-laravel": "^2.0.15",
         "laravel/fortify": "^1.33.0",
         "laravel/framework": "^12.43.1",
         "laravel/tinker": "^2.10.2",
         "laravel/wayfinder": "^0.1.12",
-        "nunomaduro/essentials": "^1.0.1"
+        "nunomaduro/essentials": "^1.0.1",
+        "relaticle/flowforge": ">=2.2"
     },
     "require-dev": {
-        "driftingly/rector-laravel": "^2.1.7",
+        "barryvdh/laravel-debugbar": "^3.16.2",
+        "barryvdh/laravel-ide-helper": "^3.6.1",
+        "driftingly/rector-laravel": "^2.1.8",
         "fakerphp/faker": "^1.24.1",
         "larastan/larastan": "^3.8.1",
         "laravel/boost": "^1.8.5",
@@ -115,6 +128,48 @@
             "php-http/discovery": true
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "plugins/filament-messages"
+        },
+        {
+            "type": "path",
+            "url": "plugins/filament-queueable-bulk-actions"
+        },
+        {
+            "type": "path",
+            "url": "plugins/filament-postnummer"
+        },
+                {
+            "type": "path",
+            "url": "plugins/filament-shield"
+        },
+        {
+            "type": "path",
+            "url": "plugins/filament-resized-column"
+        },
+        {
+            "type": "path",
+            "url": "plugins/filament-fullcalendar"
+        },
+        {
+            "type": "path",
+            "url": "plugins/filament-tab-plugin"
+        },
+        {
+            "type": "path",
+            "url": "plugins/filament-calendar"
+        },
+        {
+            "type": "path",
+            "url": "plugins/filament-panel-switch"
+        },
+        {
+            "type": "path",
+            "url": "plugins/filament-language-switch"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }

@@ -1,0 +1,45 @@
+{
+    "name": "adultdate/filament-messages",
+    "description": "Filament Messages is a powerful messaging plugin for FilamentPHP. It provides an easy-to-use interface for real-time messaging within Filament admin panels.",
+    "keywords": ["laravel", "framework", "admin-panel", "messages", "chat", "filament"],
+    "homepage": "https://github.com/adultdate/filament-messages",
+    "support": {
+        "issues": "https://github.com/adultdate/filament-messages/issues",
+        "source": "https://github.com/adultdate/filament-messages"
+    },
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "filament/filament": "^3.2",
+        "laravel/framework": "^11.31",
+        "phpunit/phpunit": "^11.0.1",
+        "filament/spatie-laravel-media-library-plugin": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Adultdate\\FilamentMessages\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "adultdate",
+            "email": "blhk0532@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Adultdate\\FilamentMessages\\FilamentMessagesServiceProvider"
+            ],
+            "aliases": {
+                "FilamentMessages": "Adultdate\\FilamentMessages\\Facades"
+            }
+        }
+    }
+}

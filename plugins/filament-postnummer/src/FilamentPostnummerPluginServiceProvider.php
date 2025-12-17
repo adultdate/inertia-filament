@@ -1,0 +1,18 @@
+<?php
+
+namespace Adultdate\FilamentPostnummer;
+
+use Illuminate\Support\ServiceProvider;
+
+class FilamentPostnummerPluginServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        //
+    }
+
+    public function boot(): void
+    {
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+    }
+}

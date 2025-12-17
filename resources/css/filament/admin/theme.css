@@ -1,0 +1,9 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+
+/* Filament Plugins */
+@source '../../../../plugins/adultdate/filament-panel-switch/resources/views/**/*.blade.php';
+@source '../../../../plugins/adultdate/filament-language-switch/resources/views/**/*.blade.php';
