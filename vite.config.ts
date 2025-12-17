@@ -7,7 +7,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.tsx'],
+            input: ['resources/css/app.css', 'resources/js/app.tsx', 'resources/css/filament/admin/theme.css'],
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
         }),
@@ -17,15 +17,6 @@ export default defineConfig({
             formVariants: true,
         }),
     ],
-    server: {
-        host: '0.0.0.0',
-        port: 4000,
-        strictPort: true,
-        hmr: {
-            host: 'admin.nordicdigitalthailand.com',
-            protocol: 'https',
-        },
-    },
     esbuild: {
         jsx: 'automatic',
     },
