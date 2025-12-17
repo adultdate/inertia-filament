@@ -25,7 +25,10 @@ final class AppServiceProvider extends ServiceProvider
     {
         $this->bootModelsDefaults();
         $this->bootPasswordDefaults();
-        $this->bootViteConfiguration();
+       
+        if (app()->environment('development')) {
+            URL::forceScheme('https');
+        }
 
         PanelSwitch::configureUsing(function (PanelSwitch $switch): void {
             $switch
@@ -86,14 +89,5 @@ final class AppServiceProvider extends ServiceProvider
     private function bootPasswordDefaults(): void
     {
         Password::defaults(fn () => app()->isLocal() || app()->runningUnitTests() ? Password::min(12)->max(255) : Password::min(12)->max(255)->uncompromised());
-    }
-
-    private function bootViteConfiguration(): void
-    {
-        // When behind Apache reverse proxy, use HTTPS URLs without port
-        if (app()->environment('production') || config('app.url') === 'https://admin.nordicdigitalthailand.com') {
-            // Force Laravel to use HTTPS for Vite assets when behind proxy
-            URL::forceScheme('https');
-        }
     }
 }
