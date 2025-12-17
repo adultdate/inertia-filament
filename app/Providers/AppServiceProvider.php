@@ -25,10 +25,7 @@ final class AppServiceProvider extends ServiceProvider
     {
         $this->bootModelsDefaults();
         $this->bootPasswordDefaults();
-       
-        if (app()->environment('development')) {
-            URL::forceScheme('https');
-        }
+        $this->bootViteConfiguration();
 
         PanelSwitch::configureUsing(function (PanelSwitch $switch): void {
             $switch
@@ -89,5 +86,13 @@ final class AppServiceProvider extends ServiceProvider
     private function bootPasswordDefaults(): void
     {
         Password::defaults(fn () => app()->isLocal() || app()->runningUnitTests() ? Password::min(12)->max(255) : Password::min(12)->max(255)->uncompromised());
+    }
+
+    private function bootViteConfiguration(): void
+    {
+        // When behind Apache reverse proxy, use HTTPS URLs
+        if (app()->environment('production') || str_starts_with(config('app.url'), 'https://')) {
+            URL::forceScheme('https');
+        }
     }
 }
