@@ -16,16 +16,27 @@ mkdir -p ~/.valet 2>/dev/null || true
 echo '{"tld":"test"}' > ~/.valet/config.json 2>/dev/null || true
 mkdir -p ~/.valet/Certificates 2>/dev/null || true
 
-# In development mode, remove manifest.json so Laravel uses dev server
-# This ensures Laravel detects the Vite dev server instead of using production build
+# Ensure build directory exists
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+mkdir -p "$PROJECT_ROOT/public/build" 2>/dev/null || true
 
-if [ -f "$PROJECT_ROOT/public/build/manifest.json" ]; then
-    # Remove manifest in dev mode so Laravel uses Vite dev server
-    # You can always rebuild with 'npm run build' for production
-    rm -f "$PROJECT_ROOT/public/build/manifest.json" 2>/dev/null || true
-fi
+# Create a minimal manifest file as fallback
+# Laravel will try to detect Vite dev server first, but needs this as fallback
+# This prevents "manifest not found" errors while still allowing dev server detection
+cat > "$PROJECT_ROOT/public/build/manifest.json" << 'EOF'
+{
+  "resources/js/app.tsx": {
+    "file": "http://localhost:4000/resources/js/app.tsx",
+    "src": "resources/js/app.tsx",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "http://localhost:4000/resources/css/app.css",
+    "src": "resources/css/app.css"
+  }
+}
+EOF
 
 # Exit successfully even if some commands fail
 exit 0
