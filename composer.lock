@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f5e5140340ac23b3edf2b5640e97729",
+    "content-hash": "22205e50236e43026bbfc0e0bddee43b",
     "packages": [
         {
             "name": "adultdate/filament-auth-designer",
@@ -3091,16 +3091,16 @@
         },
         {
             "name": "inertiajs/inertia-laravel",
-            "version": "v2.0.15",
+            "version": "v2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inertiajs/inertia-laravel.git",
-                "reference": "e86a3a82c9fca27454f7516b67790445b1001e94"
+                "reference": "c060177e1b5120e70d1c26fe7c1007a8c8238f0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/e86a3a82c9fca27454f7516b67790445b1001e94",
-                "reference": "e86a3a82c9fca27454f7516b67790445b1001e94",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/c060177e1b5120e70d1c26fe7c1007a8c8238f0d",
+                "reference": "c060177e1b5120e70d1c26fe7c1007a8c8238f0d",
                 "shasum": ""
             },
             "require": {
@@ -3155,9 +3155,9 @@
             ],
             "support": {
                 "issues": "https://github.com/inertiajs/inertia-laravel/issues",
-                "source": "https://github.com/inertiajs/inertia-laravel/tree/v2.0.15"
+                "source": "https://github.com/inertiajs/inertia-laravel/tree/v2.0.16"
             },
-            "time": "2025-12-15T14:47:18+00:00"
+            "time": "2025-12-17T21:57:59+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -14327,12 +14327,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "df7a11b7df806e493d3047bf9cf9736645bbdf84"
+                "reference": "e5034c4df32edeafb119b2c1e2b58876d0286ea8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/df7a11b7df806e493d3047bf9cf9736645bbdf84",
-                "reference": "df7a11b7df806e493d3047bf9cf9736645bbdf84",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e5034c4df32edeafb119b2c1e2b58876d0286ea8",
+                "reference": "e5034c4df32edeafb119b2c1e2b58876d0286ea8",
                 "shasum": ""
             },
             "conflict": {
@@ -14378,10 +14378,10 @@
                 "athlon1600/php-proxy-app": "<=3",
                 "athlon1600/youtube-downloader": "<=4",
                 "austintoddj/canvas": "<=3.4.2",
-                "auth0/auth0-php": ">=3.3,<=8.16",
-                "auth0/login": "<=7.18",
-                "auth0/symfony": "<=5.4.1",
-                "auth0/wordpress": "<=5.3",
+                "auth0/auth0-php": ">=3.3,<8.18",
+                "auth0/login": "<7.20",
+                "auth0/symfony": "<=5.5",
+                "auth0/wordpress": "<=5.4",
                 "automad/automad": "<2.0.0.0-alpha5",
                 "automattic/jetpack": "<9.8",
                 "awesome-support/awesome-support": "<=6.0.7",
@@ -15324,7 +15324,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-16T01:34:46+00:00"
+            "time": "2025-12-17T21:06:23+00:00"
         },
         {
             "name": "sebastian/cli-parser",

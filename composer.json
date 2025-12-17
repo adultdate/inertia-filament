@@ -7,7 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4.0",
-        "adultdate/filament-auth-designer": "^2.0",
+        "adultdate/filament-auth-designer": "^2.0.3",
         "adultdate/filament-calendar": "*",
         "adultdate/filament-fullcalendar": "*",
         "adultdate/filament-language-switch": "*",
@@ -19,7 +19,7 @@
         "adultdate/filament-shield": "*",
         "adultdate/filament-tab-layout-plugin": "*",
         "filament/filament": "^4.3.1",
-        "inertiajs/inertia-laravel": "^2.0.15",
+        "inertiajs/inertia-laravel": "^2.0.16",
         "laravel/fortify": "^1.33.0",
         "laravel/framework": "^12.43.1",
         "laravel/tinker": "^2.10.2",
@@ -169,6 +169,10 @@
         {
             "type": "path",
             "url": "plugins/filament-language-switch"
+        },
+                {
+            "type": "path",
+            "url": "plugins/filament-auth-designer"
         }
     ],
     "minimum-stability": "dev",
