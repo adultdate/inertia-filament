@@ -16,5 +16,16 @@ mkdir -p ~/.valet 2>/dev/null || true
 echo '{"tld":"test"}' > ~/.valet/config.json 2>/dev/null || true
 mkdir -p ~/.valet/Certificates 2>/dev/null || true
 
+# In development mode, remove manifest.json so Laravel uses dev server
+# This ensures Laravel detects the Vite dev server instead of using production build
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+if [ -f "$PROJECT_ROOT/public/build/manifest.json" ]; then
+    # Remove manifest in dev mode so Laravel uses Vite dev server
+    # You can always rebuild with 'npm run build' for production
+    rm -f "$PROJECT_ROOT/public/build/manifest.json" 2>/dev/null || true
+fi
+
 # Exit successfully even if some commands fail
 exit 0
