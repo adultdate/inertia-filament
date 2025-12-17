@@ -33,14 +33,21 @@ final class ForceHttps
         $appUrl = config('app.url');
         $shouldUseHttps = str_starts_with($appUrl, 'https://');
 
-        if (! $request->secure() && app()->environment('production') && $shouldUseHttps) {
-            // Build redirect URL using APP_URL domain
-            $appHost = parse_url($appUrl, PHP_URL_HOST);
-            $scheme = parse_url($appUrl, PHP_URL_SCHEME) ?: 'https';
-            $port = parse_url($appUrl, PHP_URL_PORT);
+        // Check if request is secure (handles proxies correctly)
+        $isSecure = $request->secure() ||
+                   $request->header('X-Forwarded-Proto') === 'https' ||
+                   $request->header('X-Forwarded-Ssl') === 'on';
 
-            $redirectUrl = $scheme.'://'.$appHost;
-            if ($port) {
+        if (! $isSecure && app()->environment('production') && $shouldUseHttps) {
+            // Build redirect URL using the current request's host (not APP_URL host)
+            // This prevents redirect loops when APP_URL doesn't match the actual domain
+            $scheme = 'https';
+            $currentHost = $request->getHost();
+            $port = $request->getPort();
+
+            // Only include port if it's not the default HTTPS port (443)
+            $redirectUrl = $scheme.'://'.$currentHost;
+            if ($port && $port !== 443 && $port !== 80) {
                 $redirectUrl .= ':'.$port;
             }
             $redirectUrl .= $request->getRequestUri();
