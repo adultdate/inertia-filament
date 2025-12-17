@@ -3,7 +3,7 @@
     "name": "adultdate/inertia-filament",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": ["laravel", "filament", "inertiajs"],
     "license": "MIT",
     "require": {
         "php": "^8.4.0",
