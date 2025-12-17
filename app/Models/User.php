@@ -6,24 +6,18 @@ namespace App\Models;
 
 use Carbon\CarbonInterface;
 use Database\Factories\UserFactory;
+use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-
-use Adultdate\FilamentMessages\Models\Traits\HasFilamentMessages;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasAvatar;
-use Filament\Models\Contracts\HasName;
-use Filament\Models\Contracts\HasTenants;
-use Filament\Panel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -45,7 +39,7 @@ final class User extends Authenticatable implements MustVerifyEmail
     /**
      * @use HasFactory<UserFactory>
      */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasApiTokens, HasFactory, HasRoles, Notifiable, TwoFactorAuthenticatable;
 
     /**
      * @var list<string>
@@ -76,6 +70,7 @@ final class User extends Authenticatable implements MustVerifyEmail
             'updated_at' => 'datetime',
         ];
     }
+
     public function initials(): string
     {
         return Str::of($this->name)
@@ -127,9 +122,20 @@ final class User extends Authenticatable implements MustVerifyEmail
         return $disk->url($this->avatar_url);
     }
 
-    public function canAccessPanel(\Filament\Panel $panel): bool
+    public function canAccessPanel(Panel $panel): bool
     {
-        return $this->is_active || 1;
+        // For admin panel, require super_admin role
+        if ($panel->getId() === 'admin') {
+            return $this->hasRole('super_admin');
+        }
+
+        // For app panel, allow all users (or check is_active if needed)
+        if ($panel->getId() === 'app') {
+            return $this->is_active ?? true;
+        }
+
+        // Default: allow if active
+        return $this->is_active ?? true;
     }
 
     public function getFilamentName(): string
