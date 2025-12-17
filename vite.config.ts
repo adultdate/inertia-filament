@@ -10,7 +10,6 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.tsx'],
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
-            detectTls: 'admin.nordicdigitalthailand.com',
         }),
         react(),
         tailwindcss(),

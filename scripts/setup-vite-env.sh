@@ -6,13 +6,15 @@
 mkdir -p ~/.config/herd 2>/dev/null || true
 touch ~/.config/herd/config.json 2>/dev/null || true
 
-# Create Valet config directory  
+# Create Valet config directory and certificates
 mkdir -p ~/.config/valet 2>/dev/null || true
 touch ~/.config/valet/config.json 2>/dev/null || true
+mkdir -p ~/.config/valet/Certificates 2>/dev/null || true
 
 # Also try common Valet locations
 mkdir -p ~/.valet 2>/dev/null || true
 touch ~/.valet/config.json 2>/dev/null || true
+mkdir -p ~/.valet/Certificates 2>/dev/null || true
 
 # Exit successfully even if some commands fail
 exit 0
