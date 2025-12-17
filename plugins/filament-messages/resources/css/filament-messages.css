@@ -1,0 +1,133 @@
+/**
+ * Filament Messages Plugin Styles
+ * 
+ * Custom styles for the Filament Messages plugin
+ */
+
+/* Chat container animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Message bubble animations */
+.message-bubble {
+    animation: slideIn 0.2s ease-out;
+}
+
+/* Smooth scrolling for chat container */
+#chatContainer {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for chat */
+#chatContainer::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#chatContainer::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 3px;
+}
+
+#chatContainer::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.7);
+}
+
+/* Dark mode scrollbar */
+.dark #chatContainer::-webkit-scrollbar-thumb {
+    background: rgba(75, 85, 99, 0.5);
+}
+
+.dark #chatContainer::-webkit-scrollbar-thumb:hover {
+    background: rgba(75, 85, 99, 0.7);
+}
+
+/* Message input focus styles */
+.chat-form textarea:focus {
+    outline: none;
+    border-color: rgb(59, 130, 246);
+}
+
+/* File upload preview improvements */
+.fi-fo-file-upload-preview {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Conversation list item hover effect */
+.conversation-item {
+    transition: background-color 0.15s ease;
+}
+
+.conversation-item:hover {
+    background-color: rgba(243, 244, 246, 0.5);
+}
+
+.dark .conversation-item:hover {
+    background-color: rgba(31, 41, 55, 0.5);
+}
+
+/* Unread badge pulse animation */
+@keyframes pulse-subtle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.unread-badge {
+    animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Message timestamp fade in */
+.message-timestamp {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.message-bubble:hover .message-timestamp {
+    opacity: 1;
+}
+
+/* Loading spinner for attachments */
+.attachment-loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    border-top-color: rgb(59, 130, 246);
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 640px) {
+    .message-bubble {
+        max-width: 85%;
+    }
+}
+
+/* Search input focus ring */
+.search-input:focus {
+    outline: 2px solid rgb(59, 130, 246);
+    outline-offset: 2px;
+}
