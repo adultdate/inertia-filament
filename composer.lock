@@ -4,15 +4,89 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b54de83c273742272aa72898d585a6c4",
+    "content-hash": "6f5e5140340ac23b3edf2b5640e97729",
     "packages": [
+        {
+            "name": "adultdate/filament-auth-designer",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adultdate/filament-auth-designer.git",
+                "reference": "6b4109c4fd879cd4081c80ac2740542dc6c27205"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adultdate/filament-auth-designer/zipball/6b4109c4fd879cd4081c80ac2740542dc6c27205",
+                "reference": "6b4109c4fd879cd4081c80ac2740542dc6c27205",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "illuminate/contracts": "^11.0||^12.0",
+                "php": "^8.2|^8.3|^8.4",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.8",
+                "orchestra/testbench": "^10.0.0||^9.0.0",
+                "pestphp/pest": "^4.0",
+                "pestphp/pest-plugin-arch": "^4.0",
+                "pestphp/pest-plugin-laravel": "^4.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "rector/rector": "^2.2",
+                "spatie/laravel-ray": "^1.35"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Caresome\\FilamentAuthDesigner\\AuthDesignerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Caresome\\FilamentAuthDesigner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caresome",
+                    "email": "dev@caresome.app",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Transform Filament's default auth pages into stunning, brand-ready experiences",
+            "homepage": "https://github.com/caresome/filament-auth-designer",
+            "keywords": [
+                "Authentication",
+                "auth-designer",
+                "auth-pages",
+                "caresome",
+                "filament",
+                "filament-plugin",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/adultdate/filament-auth-designer/tree/v2.0.3"
+            },
+            "time": "2025-12-06T16:40:38+00:00"
+        },
         {
             "name": "adultdate/filament-calendar",
             "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-calendar",
-                "reference": "80961d9951ad5e4eed0693838de8374510adf4ec"
+                "reference": "e1c21c073aad74466e20eeb00c01496c66c571a9"
             },
             "require": {
                 "filament/filament": "^4.0-beta",
@@ -111,11 +185,11 @@
         },
         {
             "name": "adultdate/filament-fullcalendar",
-            "version": "4.x-dev",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-fullcalendar",
-                "reference": "10984b8145aa275b87ed4f9b5a451175e3be10cd"
+                "reference": "7970f299e276a61caf533419381d4e01a03ccc12"
             },
             "require": {
                 "filament/filament": "^4.0",
@@ -185,7 +259,7 @@
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-language-switch",
-                "reference": "6e56dd75cdd7127c0485ac9a0474e594f0c8f0c9"
+                "reference": "d006b45a169c1b77a5b73699c6d358bd4e7e47eb"
             },
             "require": {
                 "filament/filament": "^4.0",
@@ -284,7 +358,7 @@
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-messages",
-                "reference": "2d05cad5aa0ba24f53847f74064f1a210e869ba6"
+                "reference": "541d9e1b05e0ae71bd203ff57c8140137aa29386"
             },
             "require": {
                 "php": "^8.2"
@@ -344,7 +418,7 @@
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-panel-switch",
-                "reference": "b6f75de721619cc6a42c53c0e3234f5c4feb129d"
+                "reference": "15d1faabb509daccd4b8a4a2b9a5187eed8b3dec"
             },
             "require": {
                 "filament/filament": "^4.0",
@@ -421,7 +495,7 @@
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-postnummer",
-                "reference": "ff3547791a892f054120fcc350a949fc069b13b5"
+                "reference": "11b3b2d6d1851262ce6ff7f25bce682b32ea29b5"
             },
             "require": {
                 "filament/filament": "^4.0",
@@ -495,7 +569,7 @@
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-queueable-bulk-actions",
-                "reference": "dbcf48f691c3ef9e92b4bab52239f0ff18caaa54"
+                "reference": "870514d25b8d7ef47310aab79f57bd0b579c2e75"
             },
             "require": {
                 "filament/filament": "^4.0",
@@ -587,7 +661,7 @@
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-resized-column",
-                "reference": "63e9cf00bf83628867989771c7bb1bd7feda502f"
+                "reference": "24e91f0d08187c8bb790f47e6c0ed8a2ce595f38"
             },
             "require": {
                 "filament/support": "^3.2|^4.0"
@@ -625,7 +699,7 @@
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-shield",
-                "reference": "cccf835bf431b51e653dc4a005b9f1ac1e637de7"
+                "reference": "6c7ca602a6a1bc924f26dc302e920d6a7f83acde"
             },
             "require": {
                 "bezhansalleh/filament-plugin-essentials": "^1.0",
@@ -725,11 +799,11 @@
         },
         {
             "name": "adultdate/filament-tab-layout-plugin",
-            "version": "3.x-dev",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "plugins/filament-tab-plugin",
-                "reference": "5d6b5eeeca400a66a1f104809dca749638d0d87d"
+                "reference": "7c23e613334d3dd204b77366032c20d791274e7f"
             },
             "require": {
                 "filament/schemas": "^4.0",
