@@ -11,7 +11,6 @@ export default defineConfig({
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
             detectTls: 'admin.nordicdigitalthailand.com',
-            valetTld: false,
         }),
         react(),
         tailwindcss(),

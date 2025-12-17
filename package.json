@@ -4,7 +4,7 @@
     "scripts": {
         "build": "vite build",
         "build:ssr": "vite build && vite build --ssr",
-        "dev": "vite",
+        "dev": "bash scripts/setup-vite-env.sh && vite",
         "lint": "eslint . --fix && prettier --write resources/",
         "test:lint": "eslint . && prettier --check resources/",
         "test:types": "tsc --noEmit"
