@@ -9,11 +9,10 @@ use BezhanSalleh\LanguageSwitch\LanguageSwitch;
 use BezhanSalleh\PanelSwitch\PanelSwitch;
 // PLUGINS
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Validation\Rules\Password;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
 
 final class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +25,7 @@ final class AppServiceProvider extends ServiceProvider
     {
         $this->bootModelsDefaults();
         $this->bootPasswordDefaults();
+        $this->bootViteConfiguration();
 
         PanelSwitch::configureUsing(function (PanelSwitch $switch): void {
             $switch
@@ -40,16 +40,16 @@ final class AppServiceProvider extends ServiceProvider
                 ->iconSize(20)
                 ->renderHook('panels::global-search.after');
             //  ->sort('asc');
-        });  
+        });
 
-            PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {
-                $user = Auth::user();
-                $panels = ['admin', 'app'];
-                if ($user instanceof User && $user->hasRole('super_admin')) {
-                    $panels = ['app', 'admin'];
-                }
-                $panelSwitch->panels($panels);
-            });
+        PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {
+            $user = Auth::user();
+            $panels = ['admin', 'app'];
+            if ($user instanceof User && $user->hasRole('super_admin')) {
+                $panels = ['app', 'admin'];
+            }
+            $panelSwitch->panels($panels);
+        });
 
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch): void {
             $switch
@@ -86,5 +86,14 @@ final class AppServiceProvider extends ServiceProvider
     private function bootPasswordDefaults(): void
     {
         Password::defaults(fn () => app()->isLocal() || app()->runningUnitTests() ? Password::min(12)->max(255) : Password::min(12)->max(255)->uncompromised());
+    }
+
+    private function bootViteConfiguration(): void
+    {
+        // When behind Apache reverse proxy, use HTTPS URLs without port
+        if (app()->environment('production') || config('app.url') === 'https://admin.nordicdigitalthailand.com') {
+            // Force Laravel to use HTTPS for Vite assets when behind proxy
+            URL::forceScheme('https');
+        }
     }
 }
